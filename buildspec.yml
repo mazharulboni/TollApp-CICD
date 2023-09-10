@@ -1,0 +1,23 @@
+version: 0.2
+
+phases:
+  install:
+    on-failure: ABORtT
+    runtime-versions:
+      python: 3.10
+    commands:
+      - pwd
+      - echo "Install Phase"
+    finally:
+      - echo "I am in finally block in the install stage"
+      - sam --version
+      - python --version
+  build:
+    on-failure: ABORT
+    commands:
+      - sam package --template-file template.yaml --s3-bucket codepipeline-us-east-1-974854360642 --output-template-file packaged-template.yml
+    finally:
+      - echo "Packaged"
+artifacts:
+  files:
+    - packaged-template.yml
