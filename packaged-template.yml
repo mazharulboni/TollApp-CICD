@@ -1,0 +1,38 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: 'TollApp
+
+  Sample SAM Template for TollApp
+
+  '
+Globals:
+  Function:
+    Timeout: 3
+Resources:
+  FunctionOne:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: s3://aws-sam-cli-managed-default-samclisourcebucket-z1qpb4ywv7sl/95854ae146e77952bbc2e5ec192ad5b4
+      Handler: app.lambda_handler
+      Runtime: python3.10
+      Architectures:
+      - x86_64
+    Metadata:
+      SamResourceId: FunctionOne
+  FunctionTwo:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: s3://aws-sam-cli-managed-default-samclisourcebucket-z1qpb4ywv7sl/de2dcbf1a07f0074587dd5c923fcd6d1
+      Handler: app.lambda_handler
+      Runtime: python3.10
+      Architectures:
+      - x86_64
+    Metadata:
+      SamResourceId: FunctionTwo
+Outputs:
+  Function01Arn:
+    Description: Hello World Lambda Function ARN
+    Value:
+      Fn::GetAtt:
+      - FunctionOne
+      - Arn
