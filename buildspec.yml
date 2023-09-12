@@ -4,7 +4,7 @@ phases:
   install:
     on-failure: ABORtT
     runtime-versions:
-      python: 3.9
+      python: 3.10
     commands:
       - pwd
       - echo "Install Phase"
