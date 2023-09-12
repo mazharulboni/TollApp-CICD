@@ -4,7 +4,7 @@ phases:
   install:
     on-failure: ABORtT
     runtime-versions:
-      python: 3.10
+      python: 3.9
     commands:
       - pwd
       - echo "Install Phase"
@@ -15,7 +15,7 @@ phases:
   build:
     on-failure: ABORT
     commands:
-      - sam package --template-file template.yaml --s3-bucket codepipeline-us-east-2-387323407118 --output-template-file packaged-template.yml
+      - aws cloudformation package --template-file template.yaml --s3-bucket codepipeline-us-east-2-387323407118 --output-template-file packaged-template.yml
     finally:
       - echo "Packaged"
 artifacts:
