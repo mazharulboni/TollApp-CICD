@@ -15,9 +15,11 @@ phases:
   build:
     on-failure: ABORT
     commands:
-      - aws cloudformation package --template-file template.yaml --s3-bucket codepipeline-us-east-2-387323407118 --output-template-file packaged-template.yml
+      - sam package --template-file template.yaml --output-template-file packaged-template.yml
     finally:
       - echo "Packaged"
 artifacts:
   files:
     - packaged-template.yml
+
+  #sam deploy --template-file /codebuild/output/src3166447627/src/packaged-template.yml --stack-name <YOUR STACK NAME>
