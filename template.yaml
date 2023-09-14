@@ -27,6 +27,14 @@ Resources:
       Runtime: python3.10
       Architectures:
         - x86_64
+  FunctionThree:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: src/FunctionThree
+      Handler: app.lambda_handler
+      Runtime: python3.10
+      Architectures:
+        - x86_64
 
 #  Function02:
 #    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
